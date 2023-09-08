@@ -1,0 +1,28 @@
+\section{Language of set theory}
+
+We construct a formal language suitable for describing sets. The language consists of some mathematical symbols as well as purely logical symbols.
+
+\begin{definition}{symbols of logic}{}
+    Here is a table of all purely logical symbols needed for set theory:
+
+\end{definition}
+
+The complete list of symbols of language is as below:
+\begin{definition}{symbols in LOST(Language of Set Theory)}{}
+    \begin{enumerate}
+        \item variable: $v_0, v_1, v_2, \ldots$
+        \item equality: $=$
+        \item membership: $\in$
+        \item connectives: $\neg, \wedge, \vee, \rightarrow$
+        \item quantifiers: $\forall, \exists$
+        \item parentheses: $(,\ )$
+    \end{enumerate}
+\end{definition}
+
+\begin{proposition}{}{}
+    \[
+        % (\Phi \iff \Psi) abbreviates (\Phi \rightarrow \Psi) \wedge (\Psi \rightarrow \Phi)\\
+        (\exists v_i \in v_j)\Phi \iff (\exists v_i)((v_i \in v_j)\wedge \Phi)\\
+        % (\forall v_i \in v_j)\Phi abbreviates (\exists v_i)((v_i \in v_j)\rightarrow \Phi)
+    \]
+\end{proposition}
