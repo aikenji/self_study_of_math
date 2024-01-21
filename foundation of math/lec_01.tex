@@ -2,23 +2,22 @@
 
 We construct a formal language suitable for describing sets. The language consists of some mathematical symbols as well as purely logical symbols.
 
-\begin{definition}{symbols of logic}{}
-    Here is a table of all purely logical symbols needed for set theory:
-
-\end{definition}
-
 The complete list of symbols of language is as below:
-\begin{definition}{symbols in LOST(Language of Set Theory)}{}
+\begin{definition}{Symbols in LOST(Language of Set Theory)}{}
     \begin{enumerate}
         \item variable: $v_0, v_1, v_2, \ldots$
         \item equality: $=$
         \item membership: $\in$
-        \item connectives: $\neg, \wedge, \vee, \rightarrow$
+        \item connectives: $\neg, \land, \lor, \implies, \iff$
         \item quantifiers: $\forall, \exists$
         \item parentheses: $(,\ )$
     \end{enumerate}
 \end{definition}
 
+\begin{remark}
+    Bounded set quantifiers shall be used. Thus, we can abbreviate the formula\\
+    $\forall x (x \in y \implies x \notin a)$ by $\forall x \in y (x \notin a).$
+\end{remark}
 \begin{proposition}{}{}
     \[
         % (\Phi \iff \Psi) abbreviates (\Phi \rightarrow \Psi) \wedge (\Psi \rightarrow \Phi)\\
@@ -26,3 +25,42 @@ The complete list of symbols of language is as below:
         % (\forall v_i \in v_j)\Phi abbreviates (\exists v_i)((v_i \in v_j)\rightarrow \Phi)
     \]
 \end{proposition}
+
+\begin{definition}{Zermelo-Fraenkel Axioms}{}
+   \begin{enumerate}
+        \item \textbf{Extensionality Axiom.}\\
+        Two sets are equal iff they have the same elements.\\
+        \\
+        $\forall A \forall B (A=B \iff \forall x (x \in A \iff x \in B))$ \\
+        \item \textbf{Empty Set Axiom.} \\
+        There is a set with no elements.\\
+        \\
+        $\exists A \forall x (x \notin A)$\\
+        \item \textbf{Subset Axiom.} \\
+        Let $\varphi(x)$ be a formula. For every set A there exists a set S that consists of all $x \in A$ with $\varphi(x)$ holds.\\
+        \\
+        $\forall A \exists S \forall x (x \in S \iff (x \in A \wedge \varphi(x))) $\\
+        \item \textbf{Pairing Axiom.}\\
+        For every u and v there is a set that consists of just u and v.\\
+        \\
+        $\forall u \forall v \exists S \forall x (x \in S \iff (x = u \vee x = v)) $\\
+        
+        \item \textbf{Union Axiom.}\\
+        For every set $\mathcal{F}$ there exists a set U that consists of all elements that belong to at least one set in $\mathcal{F}$.\\
+        \\
+        $\forall \mathcal{F} \exists U \forall x (x \in U \iff \exists F (x \in F \wedge F \in \mathcal{F}))$\\
+        \item \textbf{Power Set Axiom.}\\
+        For every set A there is a set P that consists of all subsets of A.\\
+        \\
+        $\forall A \exists \mathcal{P} \forall P (P \in \mathcal{P} \iff P \subseteq A)$
+   \end{enumerate} 
+\end{definition}
+
+\begin{theorem}{}{}
+    Let $\varphi(x)$ be a formula. Suppose that there is a set A s.t. for all $x$, if $\varphi(x)$, then $x \in A$.\\
+    Then there is a unique set S s.t. for all $x$, $x \in S \iff \varphi(x)$. \\
+    \\
+    In other words, the class $\{x:\varphi(x)\}$ is, in fact, equal to the set S.
+\end{theorem}
+
+
