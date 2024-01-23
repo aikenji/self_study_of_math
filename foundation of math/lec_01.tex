@@ -18,13 +18,6 @@ The complete list of symbols of language is as below:
     Bounded set quantifiers shall be used. Thus, we can abbreviate the formula\\
     $\forall x (x \in y \implies x \notin a)$ by $\forall x \in y (x \notin a).$
 \end{remark}
-\begin{proposition}{}{}
-    \[
-        % (\Phi \iff \Psi) abbreviates (\Phi \rightarrow \Psi) \wedge (\Psi \rightarrow \Phi)\\
-        (\exists v_i \in v_j)\Phi \iff (\exists v_i)((v_i \in v_j)\wedge \Phi)\\
-        % (\forall v_i \in v_j)\Phi abbreviates (\exists v_i)((v_i \in v_j)\rightarrow \Phi)
-    \]
-\end{proposition}
 
 \begin{definition}{Zermelo-Fraenkel Axioms}{}
    \begin{enumerate}
@@ -56,6 +49,19 @@ The complete list of symbols of language is as below:
    \end{enumerate} 
 \end{definition}
 
+\begin{remark}
+    \begin{enumerate}
+        \item The set guaranteed by empty set axiom is unique, and we call it the empty set denoted by $\varnothing$.\\
+        \item The set guaranteed by subset axiom is unique, and it is denoted by $\{x \in A:\varphi(x)\}$.\\
+        \item The set guaranteed by pairing axiom is unique, and we call it the pair set denoted by $\{u, v\}$.\\
+
+    \end{enumerate}
+\end{remark}
+
+\begin{definition}{Class}{}
+    We shall refer to any collection of the form $\{x:\varphi(x)\}$ as a \textbf{class}. When the class is not a set, then we call it \textbf{proper class}, such as $\{x:x=x\}$, sometimes we also call it unbounded collection.
+\end{definition}
+
 \begin{theorem}{}{}
     Let $\varphi(x)$ be a formula. Suppose that there is a set A s.t. for all $x$, if $\varphi(x)$, then $x \in A$.\\
     Then there is a unique set S s.t. for all $x$, $x \in S \iff \varphi(x)$. \\
@@ -63,4 +69,10 @@ The complete list of symbols of language is as below:
     In other words, the class $\{x:\varphi(x)\}$ is, in fact, equal to the set S.
 \end{theorem}
 
-
+\begin{corollary}{}{}
+    \begin{enumerate}
+        \item Intersection: $A \cap B = \{x:x \in A \land x \in B\}$\\
+        \item Difference: $A \setminus B = \{x:x \in A \land x \notin B\}$ \\
+    \end{enumerate}
+    By the previous theorem, these set operations are well defined and create new sets.
+\end{corollary}
