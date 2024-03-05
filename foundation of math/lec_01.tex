@@ -10,13 +10,14 @@ The complete list of symbols of language is as below:
         \item membership: $\in$
         \item connectives: $\neg, \land, \lor, \implies, \iff$
         \item quantifiers: $\forall, \exists$
-        \item parentheses: $(,\ )$
+        \item parentheses: $\left(,\ \right)$
     \end{enumerate}
 \end{definition}
 
 \begin{remark}
     Bounded set quantifiers shall be used. Thus, we can abbreviate the formula\\
-    $\forall x (x \in y \implies x \notin a)$ by $\forall x \in y (x \notin a).$
+    $\forall x (x \in y \implies x \notin a)$ by $(\forall x \in y) (x \notin a).$\\
+    $\exists x (x \in y \land x \notin a)$ by $(\exists x \in y) (x \notin a).$\\
 \end{remark}
 
 \begin{definition}{Zermelo-Fraenkel Axioms}{}
@@ -24,7 +25,7 @@ The complete list of symbols of language is as below:
         \item \textbf{Extensionality Axiom.}\\
         Two sets are equal iff they have the same elements.\\
         \\
-        $\forall A \forall B (A=B \iff \forall x (x \in A \iff x \in B))$ \\
+        $\forall A \forall B \left(A=B \iff \forall x \left(x \in A \iff x \in B\right)\right)$ \\
         \item \textbf{Empty Set Axiom.} \\
         There is a set with no elements.\\
         \\
@@ -50,13 +51,13 @@ The complete list of symbols of language is as below:
 \end{definition}
 
 \begin{remark}
+    All sets guaranteed by axioms 2-6 are unique. \\
     \begin{enumerate}
-        \item The set defined by empty set axiom is unique, and we call it the empty set denoted by $\varnothing$.\\
-        \item The set defined by subset axiom is unique, and it is denoted by $\{x \in A:\varphi(x)\}$.\\
-        \item The set defined by pairing axiom is unique, and we call it the pair set denoted by $\{u, v\}$.\\
-        \item The set defined by union axiom is unique, and we call it the union of $\mathcal{F}$ denoted by $\cup \mathcal{F}$.\\
-        \item The set defined by power set axiom is unique, and we call it the power set denoted by 
-        $\mathcal{P}(A) = \{X:X \subseteq A\}.$
+        \item The empty set axiom defines the empty set denoted by $\varnothing$.\\
+        \item The subset axiom defines the set denoted by $\{x \in A:\varphi(x)\}$.\\
+        \item The pairing axiom defines the unordered pair set denoted by $\{u, v\}$.\\
+        \item The union axiom defines the union of $\mathcal{F}$ denoted by $\cup \mathcal{F}$.\\
+        \item The power set axiom defines the power set denoted by $\mathcal{P}(A) = \{X:X \subseteq A\}.$
     \end{enumerate}
 \end{remark}
 
