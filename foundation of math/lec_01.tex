@@ -62,15 +62,24 @@ The complete list of symbols of language is as below:
 \end{remark}
 
 \begin{definition}{Class}{}
-    We shall refer to any collection of the form $\{x:\varphi(x)\}$ as a \textbf{class}. When the class is not a set, then we call it \textbf{proper class}, such as $\{x:x=x\}$, sometimes we also call it unbounded collection.
+    We shall refer to any collection of the form $\{x:\varphi(x)\}$ as a \textbf{class}. We call it \textbf{proper class}, 
+    when the class is not a set, such as $\{x:x=x\}$. Sometimes we also call it unbounded collection.
 \end{definition}
 
-\begin{theorem}{}{}
-    Let $\varphi(x)$ be a formula. Suppose that there is a set A s.t. for all $x$, if $\varphi(x)$, then $x \in A$.\\
-    Then there is a unique set S s.t. for all $x$, $x \in S \iff \varphi(x)$. \\
+\begin{lemma}{Condition for class to be a set}{lem:Condition for class to be a set}
+    Let $\varphi(x)$ be a formula. Suppose that there is a set A s.t. for every $x$, if $\varphi(x)$, then $x \in A$.\\
     \\
-    In other words, the class $\{x:\varphi(x)\}$ is, in fact, equal to the set S.
-\end{theorem}
+    Then there is a unique set $S$ s.t. for all $x$, $x \in S \iff \varphi(x)$. In other words, the class $\{x:\varphi(x)\}$ is equal to the set $S$.
+\end{lemma}
+
+\begin{proof}
+    Let $S = \left\{x \in A \colon \varphi(x) \right\}$ which is uniquely defined by subset axiom.\\
+    ($\implies$)\\
+    $x \in S \implies x \in A \land \varphi(x) \implies \varphi(x).$\\
+    ($\Leftarrow$)\\
+    $\varphi(x) \implies x \in A \implies x \in A \land \varphi(x).\\$
+    $x \in S$
+\end{proof}
 
 \begin{corollary}{}{}
     \begin{enumerate}
@@ -79,3 +88,4 @@ The complete list of symbols of language is as below:
     \end{enumerate}
     By the previous theorem, these set operations are well defined and create new sets.
 \end{corollary}
+
