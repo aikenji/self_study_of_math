@@ -55,11 +55,12 @@ The complete list of symbols of language is as below:
 \begin{remarks}
     All sets guaranteed by axioms 2-6 are unique.
     \begin{enumerate}
-        \item The empty set axiom defines the empty set denoted by $\varnothing$.
+        \item The empty set axiom defines the \textbf{empty set} denoted by $\varnothing$.
         \item The subset axiom defines the set denoted by $\{x \in A:\varphi(x)\}$.
-        \item The pairing axiom defines the unordered pair set denoted by $\{u, v\}$.
-        \item The union axiom defines the union of $\mathcal{F}$ denoted by $\cup \mathcal{F}$.
-        \item The power set axiom defines the power set denoted by $\mathcal{P}(A) = \{X:X \subseteq A\}.$
+        \item The pairing axiom defines the \textbf{unordered pair} denoted by $\{u, v\}$.
+        If $u = v$, then the set $\left\{u\right\}$ is referred to as a \textbf{singleton}.
+        \item The union axiom defines the \textbf{union} of $\mathcal{F}$ denoted by $\cup \mathcal{F}$.
+        \item The power set axiom defines the \textbf{power set} of $A$ denoted by $\mathcal{P}(A) = \{X:X \subseteq A\}.$
     \end{enumerate}
 \end{remarks}
 
@@ -68,11 +69,11 @@ The complete list of symbols of language is as below:
     when the class is not a set, such as $\{x:x=x\}$. Sometimes we also call it \textbf{unbounded collection.}
 \end{definition}
 
-\begin{lemma}{Condition for class to be a set}{lem:class to be set}
+\begin{theorem}{Condition for class to be a set}{class2set}
     Let $\varphi(x)$ be a formula. Suppose that there is a set A such that for every $x$, if $\varphi(x)$, then $x \in A$. Then there is a unique set $S$ such that for all $x$, $x \in S \iff \varphi(x)$.\\
     \\
     In other words, the class $\{x:\varphi(x)\}$ is equal to the set $S$.
-\end{lemma}
+\end{theorem}
 
 \begin{proof}
     Let $S = \left\{x \in A \colon \varphi(x) \right\}$ which is uniquely defined by subset axiom.\\
@@ -82,10 +83,10 @@ The complete list of symbols of language is as below:
     $\varphi(x) \implies x \in A \implies x \in A \land \varphi(x) \implies x \in S.$
 \end{proof}
 
-By the \Cref{lem:class to be set}, Some sets operations below are well defined and can be used to create new sets.
+By the \Cref{class2set}, Some sets operations below are well defined and can be used to create new sets.
 
 \begin{corollary}{}{}
-    Intersection and Difference of sets can be defined by \Cref{lem:class to be set}.
+    Intersection and Difference of sets can be defined by \Cref{class2set}. For any set $A$ and $B$:
     \begin{enumerate}
         \item Intersection: $A \cap B = \{x:x \in A \land x \in B\}$
         \item Difference: $A \setminus B = \{x:x \in A \land x \notin B\}$
