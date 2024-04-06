@@ -59,7 +59,7 @@ The complete list of symbols of language is as below:
         \item The subset axiom defines the set denoted by $\{x \in A:\varphi(x)\}$.
         \item The pairing axiom defines the \textbf{unordered pair} denoted by $\{u, v\}$.
         If $u = v$, then the set $\left\{u\right\}$ is referred to as a \textbf{singleton}.
-        \item The union axiom defines the \textbf{union} of $\mathcal{F}$ denoted by $\cup \mathcal{F}$.
+        \item The union axiom defines the \textbf{union} of $\mathcal{F}$ denoted by $\bigcup \mathcal{F}$.
         \item The power set axiom defines the \textbf{power set} of $A$ denoted by $\mathcal{P}(A) = \{X:X \subseteq A\}.$
     \end{enumerate}
 \end{remarks}
@@ -86,10 +86,20 @@ The complete list of symbols of language is as below:
 By the \Cref{class2set}, Some sets operations below are well defined and can be used to create new sets.
 
 \begin{corollary}{}{}
-    Intersection and Difference of sets can be defined by \Cref{class2set}. For any set $A$ and $B$:
+    Union, Intersection and Difference of sets can be defined by \Cref{class2set}. For any set $A$, $B$ and nonempty collection $\mathcal{F}$:
     \begin{enumerate}
-        \item Intersection: $A \cap B = \{x:x \in A \land x \in B\}$
-        \item Difference: $A \setminus B = \{x:x \in A \land x \notin B\}$
+        \item Union: $A \cup B = \{x: x \in A \lor x \in B\} $ 
+        \item Intersection: $A \cap B = \{x: x \in A \land x \in B\}$
+        \item Difference: $A \setminus B = \{x: x \in A \land x \notin B\}$
+        \item Union of $\mathcal{F}$: $\bigcup \mathcal{F} = \{x: \exists F \in \mathcal{F}(x\in F)\}$
+        \item Intersection of $\mathcal{F}$: $\bigcap \mathcal{F} = \{x: \forall F \in \mathcal{F}(x\in F)\}$
     \end{enumerate}
 \end{corollary}
+
+\begin{remark}
+    If collection $\mathcal{F}$ is empty, then\\
+    $\bigcup \varnothing = \varnothing$ \\
+    $\bigcap \varnothing$ is not well defined as set.
+
+\end{remark}
 
