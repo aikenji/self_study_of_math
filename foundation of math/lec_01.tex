@@ -1,5 +1,7 @@
 \section{Language of set theory}
 
+\subsection{Basic Set-Building Axioms}
+
 We construct a formal language suitable for describing sets. The language consists of some mathematical symbols as well as purely logical symbols.
 
 The complete list of symbols of language is as below:
@@ -86,7 +88,7 @@ The complete list of symbols of language is as below:
 By the \Cref{class2set}, Some sets operations below are well defined and can be used to create new sets.
 
 \begin{corollary}{}{}
-    Union, Intersection and Difference of sets can be defined by \Cref{class2set}. For any set $A$, $B$ and nonempty collection $\mathcal{F}$:
+    Union, Intersection and Difference of sets can be defined by \Cref{class2set}. For any set $A$, $B$ and nonempty collection $\mathcal{F}$:\\
     \begin{enumerate}
         \item Union: $A \cup B = \{x: x \in A \lor x \in B\} $ 
         \item Intersection: $A \cap B = \{x: x \in A \land x \in B\}$
@@ -98,8 +100,33 @@ By the \Cref{class2set}, Some sets operations below are well defined and can be 
 
 \begin{remark}
     If collection $\mathcal{F}$ is empty, then\\
-    $\bigcup \varnothing = \varnothing$ \\
-    $\bigcap \varnothing$ is not well defined as set.
-
+    \begin{enumerate}
+        \item $\bigcup \varnothing = \varnothing$ 
+        \item $\bigcap \varnothing$ is not well defined as set.
+    \end{enumerate}
 \end{remark}
 
+\newpage
+
+\subsection{Operations on Sets}
+
+There are some other important ways to build new sets by axioms in previous section.
+
+\begin{lemma}{}{}
+    Let $A$ and $\mathcal{F}$ be sets. Then there is a unique set $\mathcal{C}$ such that for all $X$,\\
+    $X \in \mathcal{C} \iff X = A \setminus F$ for some $F \in \mathcal{F}$.\\
+    \\
+    We shall denote $\mathcal{C}$ by $\{A \setminus F: F \in \mathcal{F}\}$.
+\end{lemma}
+
+\begin{theorem}{De Morgan's Laws}{DML}
+    If $A$ is a set and $\mathcal{F}$, then\\
+    \begin{enumerate}
+        \item $A \setminus \bigcup \mathcal{F} = \bigcap \{A \setminus F: F \in \mathcal{F}\}$
+        \item $A \setminus \bigcap \mathcal{F} = \bigcup \{A \setminus F: F \in \mathcal{F}\}$
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    
+\end{proof}
