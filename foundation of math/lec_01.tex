@@ -29,38 +29,36 @@ The complete list of symbols of language is as below:
         \item \textbf{Extensionality Axiom.}\\
         Two sets are equal iff they have the same elements.\\
         \\
-        $\forall A \forall B \left(A=B \iff \forall x \left(x \in A \iff x \in B\right)\right)$ \\
+        $\forall A \forall B (A=B \iff \forall x (x \in A \iff x \in B))$ \\
         \item \textbf{Empty Set Axiom.} \\
         There is a set with no elements.\\
         \\
         $\exists A \forall x (x \notin A)$\\
         \item \textbf{Subset Axiom.} \\
-        Let $\varphi(x)$ be a formula. For every set A there exists a set S that consists of all $x \in A$ with $\varphi(x)$ holds.\\
+        Let $\varphi(x)$ be a formula. For every set $A$ there exists a set $S$ that consists of all $x \in A$ with $\varphi(x)$ holds.\\
         \\
         $\forall A \exists S \forall x (x \in S \iff (x \in A \wedge \varphi(x))) $\\
         \item \textbf{Pairing Axiom.}\\
-        For every u and v there is a set that consists of just u and v.\\
+        For every $u$ and $v$ there is a set that consists of just $u$ and $v$.\\
         \\
         $\forall u \forall v \exists S \forall x (x \in S \iff (x = u \vee x = v)) $\\
         
         \item \textbf{Union Axiom.}\\
-        For every set $\mathcal{F}$ there exists a set U that consists of all elements that belong to at least one set in $\mathcal{F}$.\\
+        For every set $\mathcal{F}$ there exists a set $U$ that consists of all elements that belong to at least one set in $\mathcal{F}$.\\
         \\
-        $\forall \mathcal{F} \exists U \forall x (x \in U \iff \exists F (x \in F \wedge F \in \mathcal{F}))$\\
+        $\forall \mathcal{F} \exists U \forall x (x \in U \iff \exists F \in \mathcal{F} (x \in F))$\\
         \item \textbf{Power Set Axiom.}\\
-        For every set A there is a set P that consists of all subsets of A.\\
+        For every set $A$ there is a set $\mathcal{P}$ that consists of all subsets of $A$.\\
         \\
         $\forall A \exists \mathcal{P} \forall P (P \in \mathcal{P} \iff P \subseteq A)$
    \end{enumerate} 
 \end{definition}
 
 \begin{remarks}
-    All sets guaranteed by axioms 2-6 are unique.
     \begin{enumerate}
         \item The empty set axiom defines the \textbf{empty set} denoted by $\varnothing$.
         \item The subset axiom defines the set denoted by $\{x \in A:\varphi(x)\}$.
-        \item The pairing axiom defines the \textbf{unordered pair} denoted by $\{u, v\}$.
-        If $u = v$, then the set $\left\{u\right\}$ is referred to as a \textbf{singleton}.
+        \item The pairing axiom defines the \textbf{unordered pair} denoted by $\{u, v\}$. If $u = v$, then the set $\left\{u\right\}$ is referred to as a \textbf{singleton}.
         \item The union axiom defines the \textbf{union} of $\mathcal{F}$ denoted by $\bigcup \mathcal{F}$.
         \item The power set axiom defines the \textbf{power set} of $A$ denoted by $\mathcal{P}(A) = \{X:X \subseteq A\}.$
     \end{enumerate}
@@ -71,8 +69,11 @@ The complete list of symbols of language is as below:
     when the class is not a set, such as $\{x:x=x\}$. Sometimes we also call it \textbf{unbounded collection.}
 \end{definition}
 
-\begin{theorem}{Condition for class to be a set}{class2set}
-    Let $\varphi(x)$ be a formula. Suppose that there is a set A such that for every $x$, if $\varphi(x)$, then $x \in A$. Then there is a unique set $S$ such that for all $x$, $x \in S \iff \varphi(x)$.\\
+\begin{theorem}{Sufficient condition for class to be a set}{class}
+    Let $\varphi(x)$ be a formula. Suppose that there is a set $A$ such that for every $x$, if $\varphi(x)$, then $x \in A$. Then there is a unique set $S$ such that for all $x$, $x \in S \iff \varphi(x)$.\\
+    \begin{equation*}
+        \exists A \forall x (\varphi(x) \implies x \in A) \implies  \exists ! S \forall x(x \in S \iff \varphi(x))
+    \end{equation*}
     \\
     In other words, the class $\{x:\varphi(x)\}$ is equal to the set $S$.
 \end{theorem}
@@ -84,11 +85,21 @@ The complete list of symbols of language is as below:
     ($ \Leftarrow $)\\
     $\varphi(x) \implies x \in A \implies x \in A \land \varphi(x) \implies x \in S.$
 \end{proof}
-
-By the \Cref{class2set}, Some sets operations below are well defined and can be used to create new sets.
+\begin{remarks} 
+    Furthermore, the sufficient and necessary condition for class to be a set is as follows:
+    \begin{equation*}
+        \exists S \forall x(x \in S \iff \varphi(x)) \iff \exists A \forall x(\varphi(x) \implies x \in A)
+    \end{equation*}
+\end{remarks}
 
 \begin{corollary}{}{}
-    Union, Intersection and Difference of sets can be defined by \Cref{class2set}. For any set $A$, $B$ and nonempty collection $\mathcal{F}$:\\
+    Let $\varphi(x)$ be a formula. Then $\{x:\varphi(x)\}$ is a proper class iff for every set $A$ there is a $x$ s.t. $\varphi(x)$ and $x \notin A$.
+    
+\end{corollary}
+By the \Cref{class}, Some sets operations below are well defined and can be used to create new sets.
+
+\begin{corollary}{}{}
+    Union, Intersection and Difference of sets can be defined by \Cref{class}. For any set $A$, $B$ and nonempty collection $\mathcal{F}$:\\
     \begin{enumerate}
         \item Union: $A \cup B = \{x: x \in A \lor x \in B\} $ 
         \item Intersection: $A \cap B = \{x: x \in A \land x \in B\}$
@@ -102,9 +113,14 @@ By the \Cref{class2set}, Some sets operations below are well defined and can be 
     If collection $\mathcal{F}$ is empty, then\\
     \begin{enumerate}
         \item $\bigcup \varnothing = \varnothing$ 
-        \item $\bigcap \varnothing$ is not well defined as set.
+        \item $\bigcap \varnothing$ is not well defined as set. Because the statement $x$ belongs to every members of empty set is vacuously true. So all x will belongs to it, which is a contradiction.
     \end{enumerate}
 \end{remark}
+
+\begin{theorem}{}{}
+    Suppose nonempty sets $\mathcal{F}$, $\mathcal{G}$ and $\mathcal{F} \subseteq \mathcal{G}$. Then $\bigcup \mathcal{F} \subseteq \bigcup \mathcal{G}$ and $\bigcap \mathcal{G} \subseteq \bigcap \mathcal{F}$.
+    
+\end{theorem}
 
 \newpage
 
@@ -113,20 +129,51 @@ By the \Cref{class2set}, Some sets operations below are well defined and can be 
 There are some other important ways to build new sets by axioms in previous section.
 
 \begin{lemma}{}{}
-    Let $A$ and $\mathcal{F}$ be sets. Then there is a unique set $\mathcal{C}$ such that for all $X$,\\
-    $X \in \mathcal{C} \iff X = A \setminus F$ for some $F \in \mathcal{F}$.\\
-    \\
+    Let $A$ and $\mathcal{F}$ be sets. Then there is a unique set $\mathcal{C}$ such that for all $X$,
+    \begin{equation*}
+        X \in \mathcal{C} \iff X = A \setminus F \ \text{for some}\ F \in \mathcal{F}
+    \end{equation*}
+    or,
+    \begin{equation*}
+        X \in \mathcal{C} \iff \exists F \in \mathcal{F}(X = A \setminus F) 
+    \end{equation*}
     We shall denote $\mathcal{C}$ by $\{A \setminus F: F \in \mathcal{F}\}$.
 \end{lemma}
 
+\begin{proof}
+    $\exists F \in \mathcal{F}(X = A \setminus F) \implies X \subseteq A \implies X \in \mathcal{P}(A)$\\
+    by \Cref{class}, set $\mathcal{C}$ is uniquely constructed.
+
+    
+\end{proof}
+
 \begin{theorem}{De Morgan's Laws}{DML}
-    If $A$ is a set and $\mathcal{F}$, then\\
-    \begin{enumerate}
-        \item $A \setminus \bigcup \mathcal{F} = \bigcap \{A \setminus F: F \in \mathcal{F}\}$
-        \item $A \setminus \bigcap \mathcal{F} = \bigcup \{A \setminus F: F \in \mathcal{F}\}$
-    \end{enumerate}
+    If $A$ is a set and $\mathcal{F}$, then
+    \begin{eqnarray*}
+        A \setminus \bigcup \mathcal{F} = \bigcap \{A \setminus F: F \in \mathcal{F}\}\\
+        A \setminus \bigcap \mathcal{F} = \bigcup \{A \setminus F: F \in \mathcal{F}\}
+    \end{eqnarray*}
 \end{theorem}
 
 \begin{proof}
-    
+    Proof the first one.\\
+    (\implies )\\
+    \begin{align*}
+        x \in A \setminus \bigcup \mathcal{F} &\implies x \in A \land x \notin \bigcup \mathcal{F}\\
+        &\implies x \in A \land x \notin F \ \text{for all}\   F \in \mathcal{F}\\
+        &\implies x \in A \setminus F \ \text{for all}\ F \in \mathcal{F}\\ 
+        &\implies x \in \bigcap \{A \setminus F : F \in \mathcal{F}\}
+    \end{align*}
+    ($\Leftarrow$ )\\
+    \begin{align*}
+        x &\in \bigcap \{A \setminus F : F \in \mathcal{F}\}\\
+        &\implies  x \in A \setminus F \ \text{for all}\ F \in \mathcal{F}\\
+        &\implies  x \in A \land (x \notin F \ \text{for all}\ F \in \mathcal{F})\\
+        &\implies  x \in A \land x \notin \bigcup \mathcal{F}\\
+        &\implies x \in A \setminus \bigcup \mathcal{F}
+    \end{align*}
+
 \end{proof}
+
+    
+\newpage
