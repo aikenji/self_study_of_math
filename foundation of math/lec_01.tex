@@ -119,8 +119,17 @@ By the \Cref{class}, Some sets operations below are well defined and can be used
 
 \begin{theorem}{}{}
     Suppose nonempty sets $\mathcal{F}$, $\mathcal{G}$ and $\mathcal{F} \subseteq \mathcal{G}$. Then $\bigcup \mathcal{F} \subseteq \bigcup \mathcal{G}$ and $\bigcap \mathcal{G} \subseteq \bigcap \mathcal{F}$.
-    
 \end{theorem}
+
+\begin{proof}
+    To proof the first one, Let $x \in \bigcup \mathcal{F}$.
+    \begin{align*}
+        &\implies x \in F \ \text{for some}\ F \in \mathcal{F} \land \mathcal{F} \subseteq \mathcal{G} \\
+        &\implies x \in F \ \text{for some}\ F \in \mathcal{G}\\
+        &\implies x \in \bigcup \mathcal{G}\\
+        &\implies \bigcup \mathcal{F} \subseteq \bigcup \mathcal{G}\\
+    \end{align*}
+\end{proof}
 
 \newpage
 
@@ -131,7 +140,7 @@ There are some other important ways to build new sets by axioms in previous sect
 \begin{lemma}{}{}
     Let $A$ and $\mathcal{F}$ be sets. Then there is a unique set $\mathcal{C}$ such that for all $X$,
     \begin{equation*}
-        X \in \mathcal{C} \iff X = A \setminus F \ \text{for some}\ F \in \mathcal{F}
+        X \in \mathcal{C} \iff X = A \setminus F\ \text{for some}\ F \in \mathcal{F}
     \end{equation*}
     or,
     \begin{equation*}
@@ -157,23 +166,13 @@ There are some other important ways to build new sets by axioms in previous sect
 
 \begin{proof}
     Proof the first one.\\
-    (\implies )\\
     \begin{align*}
-        x \in A \setminus \bigcup \mathcal{F} &\implies x \in A \land x \notin \bigcup \mathcal{F}\\
-        &\implies x \in A \land x \notin F \ \text{for all}\   F \in \mathcal{F}\\
-        &\implies x \in A \setminus F \ \text{for all}\ F \in \mathcal{F}\\ 
-        &\implies x \in \bigcap \{A \setminus F : F \in \mathcal{F}\}
+        x \in A \setminus \bigcup \mathcal{F} &\iff x \in A \land x \notin \bigcup \mathcal{F}\\
+        &\iff x \in A \land (\forall F \in \mathcal{F}(x \notin F)) \\
+        &\iff \forall F \in \mathcal{F}(x \in A \land x \notin F)\\ 
+        &\iff \forall F \in \mathcal{F}(x \in A \setminus F)\\ 
+        &\iff x \in \bigcap \{A \setminus F : F \in \mathcal{F}\}
     \end{align*}
-    ($\Leftarrow$ )\\
-    \begin{align*}
-        x &\in \bigcap \{A \setminus F : F \in \mathcal{F}\}\\
-        &\implies  x \in A \setminus F \ \text{for all}\ F \in \mathcal{F}\\
-        &\implies  x \in A \land (x \notin F \ \text{for all}\ F \in \mathcal{F})\\
-        &\implies  x \in A \land x \notin \bigcup \mathcal{F}\\
-        &\implies x \in A \setminus \bigcup \mathcal{F}
-    \end{align*}
-
 \end{proof}
 
-    
 \newpage
