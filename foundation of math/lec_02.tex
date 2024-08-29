@@ -8,9 +8,107 @@ In mathematics, relations and functions are usually defined in terms of ordered 
     \end{equation*}
 \end{definition}
 In 1921, Kazimierz Kuratowski give the construction of ordered pair based on ZF systems. 
-\begin{definition}{Set based construction}{}
+\begin{definition}{Set based construction of ordered pairs}{}
     The \textbf{ordered pair}, with first component x and second component y, is the set defined by
     \begin{equation*}
         \langle x,y \rangle = \{\{x\}, \{x, y\}\}
     \end{equation*}
+\end{definition}
+
+\begin{lemma}{}{}
+    Let $A$, $B$ be sets, there exists a unique set $\mathcal{D}$ s.t. for all $X$,
+    \begin{equation*}
+        X \in \mathcal{D} \iff X = \langle x,y \rangle \ \text{for some}\ x \in A \land y \in B.
+    \end{equation*}
+    or,
+    \begin{equation*}
+        X \in \mathcal{D} \iff (\exists x \in A)(\exists y \in B)(X = \langle x,y \rangle)
+    \end{equation*}
+    We shall denote $\mathcal{D}$ by $\{\langle x,y \rangle : x \in A \land y \in B\}$.
+\end{lemma}
+
+\begin{proof} 
+    $X = \langle x,y \rangle \ \text{for some}\ x \in A \land y \in B \implies X = \{\{x\},\{x,y\}\} \in \mathcal{P}(\mathcal{P}(A \cup B) )$.\\
+    The set $\mathcal{D}$ is uniquely defined by \Cref{class}.
+\end{proof}
+
+\begin{definition}{Cartesian product}{}
+    Given sets $A$ and $B$, the \textbf{Cartesian product} $A \times B$ is defined to be the set
+    \begin{equation*}
+        A \times B = \{\langle x,y \rangle : x \in A \land y \in B\}
+    \end{equation*}
+    which is uniquely given by the above lemma.
+\end{definition}
+
+\subsection{Relations}
+\begin{definition}{Relations}{}
+    A \textbf{Relation} $R$ is a set of orded pairs. In other words, for all $x$,
+    \begin{equation*}
+        x \in R \iff x = \langle a,b \rangle \ \text{for some}\ a\ \text{and}\ b.
+    \end{equation*}
+\end{definition}
+
+\begin{definition}{}{}
+    Let $A$ and $B$ be sets. 
+    \begin{enumerate}
+
+        \item A \textbf{relation from $A$ to $B$} is a subset of $A \times B$, or $R \subseteq A \times B$. 
+        \item A \textbf{relation on $A$} is a subset of $A \times A$, or $R \subseteq A \times A$. 
+    \end{enumerate}
+\end{definition}
+
+\begin{remarks}
+    by subset axiom, given a formula $\varphi(x,y)$, and sets $A$ and $B$, we can construct a relation R,
+    \begin{equation*}
+        R = \{\langle x,y \rangle \in A \times B : \varphi(x,y)\}
+    \end{equation*}
+\end{remarks}
+
+\begin{lemma}{}{}
+    Let $R$ be a relation and $A = \cup \cup R$. Then $R \subseteq A \times A$.
+\end{lemma}
+
+We conclude that every relation can be viewed as a relation on one set.
+
+\begin{definition}{}{}
+    Let R is a relation:
+    \begin{enumerate}
+
+        \item The \textbf{domain} of $R$: $dom{R} = \{x : \exists y (\langle x,y \rangle \in R)\}$.
+        \item The \textbf{range} of $R$: $ran{R} = \{y : \exists x (\langle x,y \rangle \in R)\}$.
+
+    \end{enumerate}
+\end{definition}
+
+\begin{remarks}
+    we have concluded that $x, y \in \cup \cup R$, hence the domain and range of relation $R$ are proofed to to be sets by \Cref{class}.
+\end{remarks}
+
+\begin{definition}{Operations on relations}{}
+    Let $R$ and $S$ be relations, and given set $A$
+    \begin{enumerate}
+
+        \item the \textbf{inverse} of $R$ is the relation
+        \begin{equation*}
+            R^{-1} = \{\langle y,x \rangle : \langle x,y \rangle \in R\}
+        \end{equation*}
+        or
+        \begin{equation*}
+            \langle y,x \rangle \in R^{-1} \iff \langle x,y \rangle \in R
+        \end{equation*}
+        \item the \textbf{restriction} of $R$ to $A$ is the relation
+        \begin{equation*}
+            R \vert_{A} = \{\langle x,y \rangle : \langle x,y \rangle \in R \land x \in A\}
+        \end{equation*}
+        \item the \textbf{image} of $A$ under R is the set
+        \begin{equation*}
+            R[A] = \{y : \exists x \in A (\langle x,y \rangle \in R)\}
+        \end{equation*}
+        \item the \textbf{inverse image} of A under R is the set
+        \begin{equation*}
+            R^{-1}[A] = \{x : \exists y \in A(\langle x,y \rangle \in R)\}
+        \end{equation*}
+
+    \end{enumerate}
+    
 \end{definition}
