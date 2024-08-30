@@ -108,7 +108,201 @@ We conclude that every relation can be viewed as a relation on one set.
         \begin{equation*}
             R^{-1}[A] = \{x : \exists y \in A(\langle x,y \rangle \in R)\}
         \end{equation*}
+        \item the \textbf{composition} of $R$ and $S$ is the relation
+        \begin{equation*}
+            R \circ S = \{\langle x,z \rangle : \exists y (\langle x,y \rangle \in S \land \langle y,z \rangle \in R)\}
+        \end{equation*}
+    \end{enumerate}
+\end{definition}
+
+\begin{proposition}{}{}
+    Let $R$,$S$ and $T$ be relations, then
+    \begin{enumerate}
+
+        \item $dom R^{-1} = ran R$
+        \item $ran R^{-1} = dom R$
+        \item $(R^{-1})^{-1} = R$ 
+        \item $(R \circ S)^{-1} = S^{-1} \circ R^{-1}$
+        \item $R \circ (S \circ T) = (R \circ S) \circ T$
 
     \end{enumerate}
-    
+\end{proposition}
+
+\begin{proposition}{}{}
+    Suppose $\mathcal{F}$ is a collections of sets, and R is a relation
+    \begin{enumerate}
+
+        \item $R[\bigcup \mathcal{F}] = \bigcup \{R[F] : F \in \mathcal{F}\}$
+        \item $R[\bigcap \mathcal{F}] \subseteq \bigcap \{R[F] : F \in \mathcal{F}\}$ ($\mathcal{F}$ is nonempty)
+
+    \end{enumerate}
+\end{proposition}
+The above proposition proclaim that the image of a union is the union of the images,” whereas “the image of an intersection is a subset of the intersection of the images.
+
+\begin{definition}{Single-rooted}{}
+    A relation $R$ is \textbf{single-rooted} if for every $y \in ran R$, there is exactly one $x$ s.t. $\langle x,y \rangle \in R$. In other words
+    \begin{equation*}
+        \langle x,z \rangle \in R \land \langle y,z \rangle \in R \implies x = y
+    \end{equation*}
 \end{definition}
+
+\begin{corollary}{}{}
+    Let $R$ be a single-rooted relation. Suppose that A and B are sets and $\mathcal{F}$ is a nonempty collection.
+    \begin{enumerate}
+
+        \item $R[\bigcap \mathcal{F}] = \bigcap \{R[F] : F \in \mathcal{F}\}$ 
+        \item $R[A \setminus B] = R[A] \setminus R[B]$
+
+    \end{enumerate}
+\end{corollary}
+
+\subsubsection{Equivalence relations}
+Let $R$ be a relation. If $\langle x,y \rangle \in R$, we shall say that x is related to y, sometimes it is also written as $xRy$. 
+
+\begin{definition}{Equivalence relation}{}
+    Let $\sim$ be a relation on $A$. For any $x$, $y$ and $z$ in $A$.
+    \begin{enumerate}
+
+        \item \textbf{reflexive}: $x \sim x$
+        \item \textbf{symmetric}: $x \sim y \implies y \sim x$
+        \item \textbf{transitive}: $x \sim y \land y \sim x \implies x \sim z$
+
+    \end{enumerate}
+    A relation is called a \textbf{equivalence relation} on A, if it is reflexive, symmetric and transitive.
+\end{definition}
+
+\begin{remarks}
+    \begin{enumerate}
+
+        \item The relation is \textit{reflexive} if every element in the set A is related to itself.
+        \item The relation is \textit{symmetric} if whenever x is related to y, then y is related to x.
+        \item The relation is \textit{transitive} if whenever x is related to y and y is related to z, then x is also related to z.
+
+    \end{enumerate}
+\end{remarks}
+
+\begin{definition}{Partition}{}
+    Let $A$ be a set. Let $\mathcal{P}$ be a collection of nonempty subsets of $A$. We say that $\mathcal{P}$ is a \textbf{partition} of $A$ if the following two conditions hold:
+    \begin{enumerate}
+
+        \item for every $x \in A$, there is a $P \in \mathcal{P}$ s.t. $x \in P$.
+        \item for any $P$ and $Q$ in $\mathcal{P}$, if $P \neq Q$, then $P \cap Q = \emptyset$. Sometimes we call that sets in $\mathcal{P}$ are \textbf{pairwise disjoint}.    
+
+    \end{enumerate}
+\end{definition}
+    
+\begin{definition}{Equivalence class}{}
+    Let $\sim$ be an equivalence relation on $A$, and $a$ be an element of $A$. The \textbf{equivalence class} of $a$ is the set consists of all elements of $A$ which are related to $a$. We denote it as
+    \begin{equation*}
+        [a] = \{x \in A: x \sim a\}
+    \end{equation*}
+\end{definition}
+
+\begin{theorem}{}{}
+    Let $\sim$ be an equivalence relation of $A$. For any $a$, $b \in A$,
+    \begin{equation*}
+        a \sim b \iff [a] = [b]
+    \end{equation*}
+\end{theorem}
+
+\begin{proof}
+    (\implies )
+    \begin{align*}
+        x \in [a] &\implies x \sim a\\
+        &\implies x \sim a \land a \sim b \implies x \sim b\\
+        &\implies x \in [b]\\
+    \end{align*}
+    \begin{align*}
+        x \in [b] &\implies x \sim b\\
+        &\implies x \sim b \land b \sim a \implies x \sim a\\
+        &\implies x \in [a]\\
+        &\implies [a] = [b]\\
+    \end{align*}
+    ($\Leftarrow $ )
+    \begin{align*}
+        [a] = [b] &\implies a \in [b]\\
+        &\implies a \sim b
+    \end{align*}
+\end{proof}
+
+\begin{corollary}{}{}
+    Let $\sim$ be an equivalence relation of $A$. For any $a$, $b \in A$,
+    \begin{equation*}
+        a \in [b] \iff [a] = [b]
+    \end{equation*}
+\end{corollary}
+
+\begin{theorem}{Fundamental Theorem of Equivalence Relation 1}{}
+    Let $\sim$ be an equivalence relation on $A$. Then the collection $A/\sim = \{[a]: a \in A\} $ is a partition of A. Sometimes we call $A/\sim$ the \textbf{quotient set induced by} $\sim$.
+\end{theorem}
+
+\begin{proof}
+    Firstly, we proof the existence of the collection $A/\sim$. Obviously, The collection can be written as $\{X: \exists a \in A (X = [a])\}$, which implies that $X \in \mathcal{P}(A) $. By \Cref{class}, $A/\sim$ is a set.\\
+    Then we proof $A/\sim$ is a partition of A.
+    \begin{enumerate}
+
+        \item for every $a \in A$, we can find $[a] \in A/\sim$ s.t. $a \in [a]$.
+        \item Let $[a]$, $[b] \in A/\sim$, and  $[a] \neq [b]$. Assume $[a] \cap [b] \neq \emptyset\\$
+        \begin{align*}
+            &[a] \cap [b] \neq \emptyset \\
+            &\implies x \in [a] \land x \in [b]\\
+            &\implies [x] = [a] \land [x] = [b]\\
+            &\implies [a] = [b] 
+        \end{align*} 
+
+        Which is a contradiction.
+
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}{Fundamental Theorem of Equivalence Relation 2}{}
+    Let $\mathcal{P}$ be a partition of a set $A$. Then there is an equivalence relation $\sim$ on $A$ defined as follows: 
+    \begin{equation*}
+        x \sim y \iff x \in P \land y \in P \ \text{for some}\ P \in \mathcal{P}.
+    \end{equation*}
+\end{theorem}
+
+\begin{proof}
+    We just proof the relation $\sim$ satisfy reflexive, symmetric and transitive properties.
+    \begin{enumerate}
+
+        \item reflexive:
+        \begin{equation*}
+            \forall x \in A \exists P \in \mathcal{P} (x \in P) \implies \forall x \in A (x \sim x)
+        \end{equation*}
+        \item symmetric: trivial.
+        \item transitive:
+        \begin{align*}
+            &x \sim y \land y \sim z\\
+            &\implies (x,y \in P \ \text{for some}\ P \in \mathcal{P})\land (y,z \in S \ \text{for some}\ S \in \mathcal{P})\\
+            &\implies y \in P \land y \in S\\
+            &\implies P = S\\
+            &\implies x,z \in P \ \text{for some}\ P \in \mathcal{P}\\
+            &\implies x \sim z
+        \end{align*}
+
+    \end{enumerate}
+\end{proof}
+
+\begin{examples}
+    There is an equivalence relation on $\mathbb{Z}$, defined by
+    \begin{equation*}
+        m \sim n \iff 3 | (m - n)
+    \end{equation*}
+    We get the equivalence class $[n]$:
+    \begin{equation*}
+        [n] = \{m \in \mathbb{Z}: m \sim n\} = \{3k+n: k \in \mathbb{Z}\}
+    \end{equation*}
+    \begin{align*}
+        [0] &= \{...-3,0,3,6\}\\
+        [1] &= \{...-2,1,4,7\}\\
+        [2] &= \{...-1,2,5,8\}\\
+    \end{align*}
+    Finally, we can the quotient set:
+    \begin{equation*}
+        \mathbb{Z}/\sim = \{[0],[1],[2]\}
+    \end{equation*}
+\end{examples}
+
+\subsubsection{Order relations}
+
