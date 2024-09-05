@@ -165,7 +165,7 @@ Let $R$ be a relation. If $\langle x,y \rangle \in R$, we shall say that x is re
 
         \item \textbf{reflexive}: $x \sim x$
         \item \textbf{symmetric}: $x \sim y \implies y \sim x$
-        \item \textbf{transitive}: $x \sim y \land y \sim x \implies x \sim z$
+        \item \textbf{transitive}: $x \sim y \land y \sim z \implies x \sim z$
 
     \end{enumerate}
     A relation is called a \textbf{equivalence relation} on A, if it is reflexive, symmetric and transitive.
@@ -305,4 +305,175 @@ Let $R$ be a relation. If $\langle x,y \rangle \in R$, we shall say that x is re
 \end{examples}
 
 \subsubsection{Order relations}
+
+\begin{definition}{Partial order}{}
+    Let $\preceq$ be a relation on $A$. For any $x$, $y$ and $z$ in $A$.
+    \begin{enumerate}
+
+        \item \textbf{reflexive}: $x \preceq x$
+        \item \textbf{antisymmetric}: $x \preceq y \land y \preceq x \implies x = y$
+        \item \textbf{transitive}: $x \preceq y \land y \preceq z \implies x \preceq z$
+
+    \end{enumerate}
+    A relation is called a \textbf{partial order} on A, if it is reflexive, antisymmetric and transitive. We shall say that order pairs $(A,\preceq)$ is a \textbf{poset}.
+\end{definition}
+
+\begin{examples}
+    the power set of $\{x,y,z\}$ under the inclusion relation is a poset.
+\end{examples}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=2, very thick]
+        % Nodes (subsets of {x, y, z})
+        \node (xyz) at (0,2.5) {$\{x,y,z\}$};
+        \node (xy) at (-1,1.5) {$\{x,y\}$};
+        \node (xz) at (0,1.5) {$\{x,z\}$};
+        \node (yz) at (1,1.5) {$\{y,z\}$};
+        \node (x) at (-1,0.5) {$\{x\}$};
+        \node (y) at (0,0.5) {$\{y\}$};
+        \node (z) at (1,0.5) {$\{z\}$};
+        \node (empty) at (0,-0.5) {$\emptyset$};
+        
+        % Edges (showing the subset relation)
+        \draw (empty) -- (x);
+        \draw (empty) -- (y);
+        \draw (empty) -- (z);
+        \draw (x) -- (xy);
+        \draw (x) -- (xz);
+        \draw (y) -- (xy);
+        \draw (y) -- (yz);
+        \draw (z) -- (xz);
+        \draw (z) -- (yz);
+        \draw (xy) -- (xyz);
+        \draw (xz) -- (xyz);
+        \draw (yz) -- (xyz);
+    \end{tikzpicture}
+    \caption{Hasse diagram of all subsets of the set $\{x,y,z\}$ with the subset relation.}
+    \label{fig:hasse-diagram}
+\end{figure}
+
+\newpage
+
+\begin{definition}{Total order}{}
+    Let $(A,\preceq)$ be a poset, if relation $\preceq$ satisfy that for any $x,y \in A$,
+    \begin{equation*}
+        x \preceq y \lor y \preceq x
+    \end{equation*}
+    then relation $\preceq$ is \textbf{totally order} on $A$ and we call that $A$ is a \textbf{toset}.
+\end{definition}
+
+\begin{remarks}
+    sometimes we call that $x$ and $y$ are comparable if either $x \preceq y$ or $y \preceq x$.
+\end{remarks}
+\begin{definition}{Strict order corresponding to $\preceq$}{}
+    Let $(A,\preceq)$ be a poset, for any $x,y \in A$, we define
+    \begin{equation*}
+        x \prec y \iff  x \preceq y \land x \neq y
+    \end{equation*}
+    The relation $\prec$ on $A$ shall be called as the \textbf{strict order} corresponding to $\preceq$.
+\end{definition}
+
+\begin{remarks}
+    strict order is obviously not partial order, because it is not reflexive. And $\succeq$ is just the inverse of $\preceq$. That is
+    \begin{equation*}
+        \succeq \ = \ \preceq^{-1}
+    \end{equation*}
+\end{remarks}
+
+\begin{definition}{Maximal and Minimal}{}
+    Let $(A,\preceq)$ be a poset, 
+        \begin{enumerate}
+
+            \item a element $m \in A$ is called a \textbf{maximal} iff $m \nprec x \ \text{for all}\ x \in A$.
+            \item a element $n \in A$ is called a \textbf{minimal} iff $x \nprec n \ \text{for all}\ x \in A$.
+
+        \end{enumerate}
+
+    That is to say there is no element in $A$ which is larger than $m$, and smaller than $n$.
+\end{definition}
+
+\begin{remarks}
+    equivalently, the definitions can be reclaimed as 
+    \begin{enumerate}
+
+        \item $\forall x \in A (m \preceq x \implies m = x)$
+        \item $\forall x \in A (x \preceq n \implies x = n)$
+
+    \end{enumerate}
+\end{remarks}
+
+\begin{examples}
+    The Diagram below shows that minimal and maximal may not be unique in the set.
+\end{examples}
+
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[scale=2.0, very thick]
+      % Define the nodes
+      \node (xy) at (0,2) {$\{x, y\}$};
+      \node (xz) at (2,2) {$\{x, z\}$};
+      \node (yz) at (4,2) {$\{y, z\}$};
+      
+      \node (x) at (0,0) {$\{x\}$};
+      \node (y) at (2,0) {$\{y\}$};
+      \node (z) at (4,0) {$\{z\}$};
+
+      % Draw the edges
+      \draw (x) -- (xy);
+      \draw (y) -- (xy);
+      \draw (x) -- (xz);
+      \draw (z) -- (xz);
+      \draw (y) -- (yz);
+      \draw (z) -- (yz);
+    \end{tikzpicture}
+    \caption{Hasse diagram of all subsets of \{x, y, z\} except the empty set and \{x, y, z\} itself.}
+\end{figure}
+
+\begin{definition}{Greatest and Least}{}
+    Let $(A,\preceq)$ be a poset, 
+    \begin{enumerate}
+
+            \item a element $m \in A$ is called a \textbf{greatest} iff $x \preceq m \ \text{for all}\ x \in A$.
+            \item a element $n \in A$ is called a \textbf{least} iff $n \preceq x \ \text{for all}\ x \in A$.
+
+    \end{enumerate}
+
+\end{definition}
+
+\begin{remarks}
+    If the greatest and least exists, then they must be unique, the proof is trivial.
+\end{remarks}
+
+\begin{proposition}{}{}
+    Let $(A,\preceq)$ be a poset, if the greatest $m$ exists, then $m$ is also the maximal. In same way, if the least $n$ exists, then $n$ is also the minimal.
+\end{proposition}
+
+\begin{proof}
+    We just proof the first claim. Let $m$ be the greatest element.
+    For any $x \in A$.
+    \begin{align*}
+        &m \preceq x\\
+        &\implies m \preceq x \land x \preceq m\\
+        &\implies m = x
+    \end{align*}
+\end{proof}
+
+\begin{theorem}{}{}
+    Let $(A,\preceq)$ be a toset. If the maximal exists, then it is also the greatest element and unique. 
+    If the minimal exists, then it is also the least element and unique.
+\end{theorem}
+
+\begin{proof}
+    We proof the first claim. Let $m$ be the maximal. For any $x \in A$,
+    \begin{align*}
+        &m \preceq x \implies m = x\\
+        &m \preceq x \lor x \preceq m \ \text{(definition of toset)}\\
+        &\implies m = x \lor x \preceq m \ \text{and}\  m = x \implies x \preceq m\\
+        &\implies x \preceq m 
+    \end{align*}
+    The uniqueness is due to the uniqueness of the greatest element.
+\end{proof}
+
+\subsection{Functions}
 
