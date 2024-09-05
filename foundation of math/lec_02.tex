@@ -100,11 +100,11 @@ We conclude that every relation can be viewed as a relation on one set.
         \begin{equation*}
             R \vert_{A} = \{\langle x,y \rangle : \langle x,y \rangle \in R \land x \in A\}
         \end{equation*}
-        \item the \textbf{image} of $A$ under R is the set
+        \item the \textbf{image} of $A$ under $R$ is the set
         \begin{equation*}
             R[A] = \{y : \exists x \in A (\langle x,y \rangle \in R)\}
         \end{equation*}
-        \item the \textbf{inverse image} of A under R is the set
+        \item the \textbf{inverse image} of $A$ under $R$ is the set
         \begin{equation*}
             R^{-1}[A] = \{x : \exists y \in A(\langle x,y \rangle \in R)\}
         \end{equation*}
@@ -477,3 +477,193 @@ Let $R$ be a relation. If $\langle x,y \rangle \in R$, we shall say that x is re
 
 \subsection{Functions}
 
+\begin{definition}{Single-valued}{}
+    A relation $R$ is \textbf{Single-valued} if for every $x \in dom R$, there is exactly one $y$ s.t. $\langle x,y \rangle \in R$. In other words
+    \begin{equation*}
+        \langle x,y \rangle \in R \land \langle x,z \rangle \in R \implies y = z
+    \end{equation*}
+\end{definition}
+
+\begin{definition}{Functions}{}
+    A \textbf{function} is a single-valued relation.
+\end{definition}
+
+\begin{definition}{Functions from A to B}{}
+    Let $A$ and $B$ be sets, and $F$ be a relation from $A$ to $B$. Then $F$ is 
+    said to be a \textbf{function from $A$ to $B$} if following conditions holds:
+    \begin{enumerate}
+
+        \item $dom(F) = A$.
+        \item $F$ is single-valued.
+
+    \end{enumerate}
+    The $A$ is \textbf{domain} of $F$, and $B$ is the \textbf{codomain} of $F$.\\
+    We usually call that a function $F$ from $A$ to $B$ is a subset of $A \times B$ s.t. for each $x \in A$, there is exactly one $y \in B$ so that $\langle x,y \rangle \in F$.
+\end{definition}
+
+We write \underline{$F : A \to B$ to denote that $F$ is a function from the set $A$ to the set $B$.} Thus, for each $x \in A$, there is exactly one $y \in B$ such that $\langle x, y \rangle \in F$. This unique $y$ is called \underline{“the value of $F$ at $x$” and is denoted by $F(x)$.} Therefore, $\langle x, y \rangle \in F$ if and only if $F(x) = y$.
+Moreover, one can also say that \underline{the function $F$ maps $x$ to $F(x)$, denoted by $x \mapsto F(x)$.} 
+
+\begin{examples}
+    Arrow diagram with domain as a red ellipse and codomain as a green ellipse representing the function \( F: A \to B \) defined by \( F = \{\langle a, 3 \rangle, \langle b, 5 \rangle, \langle c, 1 \rangle, \langle d, 3 \rangle\} \)
+\end{examples}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+
+    % Red ellipse for domain A and green ellipse for codomain B
+    \draw[thick, fill=red!20] (-2, 2.5) ellipse [x radius=1.5, y radius=2] node[above=3.2cm] {Domain \( A \)};
+    \draw[thick, fill=green!20] (3, 2.5) ellipse [x radius=2, y radius=2.5] node[above=3.2cm] {Codomain \( B \)};
+
+    % Black dots for elements of A inside the red ellipse
+    \fill[black] (-2,4) circle (2pt) node[right] {a};
+    \fill[black] (-2,3) circle (2pt) node[right] {b};
+    \fill[black] (-2,2) circle (2pt) node[right] {c};
+    \fill[black] (-2,1) circle (2pt) node[right] {d};
+
+    % Black dots for elements of B inside the green ellipse
+    \fill[black] (3,4.5) circle (2pt) node[right] {1};
+    \fill[black] (3,3.5) circle (2pt) node[right] {2};
+    \fill[black] (3,2.5) circle (2pt) node[right] {3};
+    \fill[black] (3,1.5) circle (2pt) node[right] {4};
+    \fill[black] (3,0.5) circle (2pt) node[right] {5};
+
+    % Thicker arrows representing the function
+    \draw[thick,->] (-2,4) -- (3,2.5); % a -> 3
+    \draw[thick,->] (-2,3) -- (3,0.5); % b -> 5
+    \draw[thick,->] (-2,2) -- (3,4.5); % c -> 1
+    \draw[thick,->] (-2,1) -- (3,2.5); % d -> 3
+
+    \end{tikzpicture}
+    \caption{Arrow diagram representing the function \( F: A \to B \) defined by \( F = \{\langle a, 3 \rangle, \langle b, 5 \rangle, \langle c, 1 \rangle, \langle d, 3 \rangle\} \)}
+    \label{fig:arrow-diagram}
+\end{figure}
+
+\begin{example}
+    $F(x) = 2x^3 + 1,\ \text{for all } x \in \mathbb{R}.$ is a function, we can rewrite it in formal way:
+    \begin{equation*}
+        F = \{\langle x,y \rangle \in \mathbb{R}\times \mathbb{R}: y = 2 x^{3} + 1\}
+    \end{equation*}
+\end{example}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            axis lines = middle,
+            xlabel = \( x \),
+            ylabel = \( F(x) \),
+            domain = -1:1,
+            samples = 100,
+            grid = both,
+            title = {Graph of \( F(x) = 2x^3 + 1 \)},
+            width = 7cm,
+            height = 6cm
+            ]
+            \addplot[
+                blue,
+                thick
+            ]
+            {2*x^3 + 1};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Graph of the function \( F(x) = 2x^3 + 1 \) for all \( x \in \mathbb{R} \)}
+    \label{fig:graph}
+\end{figure}
+
+\begin{theorem}{}{}
+    Let $F$ and $G$ be functions with common domain s.t. $domF = domG$. Then
+    \[
+        F = G \iff F(x) = F(y) \ \text{for all}\ x, y \in domF.
+    \]
+\end{theorem}
+
+\begin{definition}{}{}
+Let $A$ and $B$ be sets. The set of all functions from $A$ to $B$, denoted by $B^A$, is defined by
+\[
+B^A = \{ F : F : A \to B \}.
+\]
+\end{definition}
+
+\begin{remarks}
+    The existence of $B^{A}$ is guaranteed by \Cref{class} due to that $F \in \mathcal{P}(A \times B) $.
+\end{remarks}
+
+\begin{examples}
+    The empty function is the function whose domain is empty set. For every set $B$, there is a unique empty function $f: \varnothing \to B$. Due to $f \subseteq \varnothing \times B$, which is just empty set,  the empty function is just empty set.
+    \[
+        B^{\varnothing} = \{\varnothing\}
+    \]
+    and 
+    \[
+        \varnothing^A = \varnothing
+    \]
+\end{examples}
+
+\begin{definition}{Operations on functions}{}
+    Let $F$ and $G$ be functions, and given set $A$
+    \begin{enumerate}
+
+        \item the \textbf{inverse} of $F$ is the \underline{relation} 
+        \begin{equation*}
+            F^{-1} = \{\langle y,x \rangle : F(x) = y\}
+        \end{equation*}
+        or
+        \begin{equation*}
+            \langle y,x \rangle \in F^{-1} \iff F(x) = y
+        \end{equation*}
+        \item the \textbf{restriction} of $F$ to $A$ is the function
+        \begin{equation*}
+            F \vert_{A} = \{\langle x,y \rangle : F(x) = y \land x \in A\}
+        \end{equation*}
+        \item the \textbf{image} of $A$ under $F$ is the set
+        \begin{equation*}
+            F[A] = \{y : \exists x \in A (F(x) = y)\}
+        \end{equation*}
+        \item the \textbf{inverse image} of $B$ under $F$ is the set
+        \begin{equation*}
+            F^{-1}[B] = \{x : \exists y \in B(F(x) = y)\}
+        \end{equation*}
+        \item the \textbf{composition} of $F$ and $G$ is the function
+        \begin{equation*}
+            F \circ G = \{\langle x,z \rangle : \exists y (G(x)=y \land F(y)=z)\}
+        \end{equation*}
+    \end{enumerate}
+\end{definition}
+
+\subsubsection{One-to-one functions}
+If a function has no repeated values, then we will say that the function is one-to-one.
+For example:
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+
+    % Red ellipse for domain A and green ellipse for codomain B
+    \draw[thick, fill=red!20] (-2, 2.5) ellipse [x radius=1.5, y radius=2] node[above=3.2cm] {Domain \( A \)};
+    \draw[thick, fill=green!20] (3, 2.5) ellipse [x radius=2, y radius=2.5] node[above=3.2cm] {Codomain \( B \)};
+
+    % Black dots for elements of A inside the red ellipse
+    \fill[black] (-2,4) circle (2pt) node[right] {a};
+    \fill[black] (-2,3) circle (2pt) node[right] {b};
+    \fill[black] (-2,2) circle (2pt) node[right] {c};
+    \fill[black] (-2,1) circle (2pt) node[right] {d};
+
+    % Black dots for elements of B inside the green ellipse
+    \fill[black] (3,4.5) circle (2pt) node[right] {1};
+    \fill[black] (3,3.5) circle (2pt) node[right] {2};
+    \fill[black] (3,2.5) circle (2pt) node[right] {3};
+    \fill[black] (3,1.5) circle (2pt) node[right] {4};
+    \fill[black] (3,0.5) circle (2pt) node[right] {5};
+
+    % Thicker arrows representing the function
+    \draw[thick,->] (-2,4) -- (3,3.5); % a -> 2
+    \draw[thick,->] (-2,3) -- (3,4.5); % b -> 1
+    \draw[thick,->] (-2,2) -- (3,0.5); % c -> 5
+    \draw[thick,->] (-2,1) -- (3,1.5); % d -> 4
+
+    \end{tikzpicture}
+    \caption{Arrow diagram representing the function \( F: A \to B \) defined by \( F = \{\langle a, 2 \rangle, \langle b, 1 \rangle, \langle c, 5 \rangle, \langle d, 4 \rangle\} \)}
+    \label{fig:arrow-diagram}
+\end{figure}
