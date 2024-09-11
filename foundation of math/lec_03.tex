@@ -1,0 +1,64 @@
+\section{Natural Numbers}
+
+\subsection{Peano Postulates}
+
+\begin{definition}{}{}
+    Let $S : N \to N$ and let $A \subseteq N$. Then $A$ is said to be closed under $S$ iff
+    \begin{equation*}
+        S(x) \in A \text{ for all } x \in A
+    \end{equation*}
+\end{definition}
+
+\begin{definition}{Peano System}{}
+    Let $(N,S,e)$ be an ordered triple that consists of a set $N$, a
+    function $S : N \to N$, and an element $e \in N$. Then $(N,S,e)$
+    is a \textbf{Peano system} if the following conditions hold:
+    \begin{enumerate}
+
+        \item $e \notin ranS$
+        \item $S$ is injective.
+        \item For all $A \subseteq N$
+        \begin{equation*}
+            e \in A \land A \text{ is closed under } S \implies A = N
+        \end{equation*}
+
+    \end{enumerate}
+    
+\end{definition}
+
+\subsection{Inductive Sets}
+
+In this section, we will construct natural numbers under the 
+architecture of set theory.
+
+\begin{definition}{Successor}{}
+    For each set $x$, the \textbf{successor} $x^{+}$ is the set defined by 
+    \begin{equation*}
+        x^{+} = x \cup \{x\}
+    \end{equation*}
+\end{definition}
+
+\begin{proposition}{}{}
+    \begin{enumerate}
+
+        \item $a \in x^{+} \iff a \in x \lor a = x$
+        \item $x \in x^{+}$
+        \item $x \subseteq x^{+}$
+
+    \end{enumerate}
+\end{proposition}
+
+\begin{example}
+   The first few natural numbers as follows
+   \begin{itemize}
+
+       \item $0 = \varnothing$
+       \item $1 = \{0\}$
+       \item $2 = \{0,1\}$
+       \item $3 = \{0,1,2\}$
+       \item $4 = \{0,1,2,3\}$
+
+   \end{itemize} 
+\end{example}
+
+

@@ -619,11 +619,11 @@ B^A = \{ F : F : A \to B \}.
         \end{equation*}
         \item the \textbf{image} of $A$ under $F$ is the set
         \begin{equation*}
-            F[A] = \{y : \exists x \in A (F(x) = y)\}
+            F[A] = \{y : \exists x \in A (F(x) = y)\} = \{F(x): x \in A\}
         \end{equation*}
         \item the \textbf{inverse image} of $B$ under $F$ is the set
         \begin{equation*}
-            F^{-1}[B] = \{x : \exists y \in B(F(x) = y)\}
+            F^{-1}[B] = \{x : \exists y \in B(F(x) = y)\} = \{x : F(x) \in B\}
         \end{equation*}
         \item the \textbf{composition} of $F$ and $G$ is the function
         \begin{equation*}
@@ -636,7 +636,7 @@ B^A = \{ F : F : A \to B \}.
 If a function has no repeated values, then we will say that the function is one-to-one.
 For example:
 
-\begin{figure}[htbp]
+\begin{figure}[h]
     \centering
     \begin{tikzpicture}
 
@@ -665,5 +665,151 @@ For example:
 
     \end{tikzpicture}
     \caption{Arrow diagram representing the function \( F: A \to B \) defined by \( F = \{\langle a, 2 \rangle, \langle b, 1 \rangle, \langle c, 5 \rangle, \langle d, 4 \rangle\} \)}
-    \label{fig:arrow-diagram}
+    \label{fig:injection}
 \end{figure}
+
+\begin{definition}{Injection}{}
+    A function $F$ is said to be \textbf{one-to-one}, or \textbf{injection} iff for any $x, y \in domF$
+    \begin{equation*}
+        F(x) = F(y) \implies x = y
+    \end{equation*}
+    In other words, distinct elements are mapped to distinct elements. 
+\end{definition}
+
+\begin{lemma}{}{}
+    A function $F$ is one-one iff it is single-rooted.
+\end{lemma}
+
+\begin{theorem}{}{}
+    Let $F$ be a relation. 
+    \begin{enumerate}
+
+        \item Then $F^{-1}$ is a function iff $F$ is single-rooted.
+        \item Then $F$ is a function iff $F^{-1}$ is single-rooted.
+
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    ($\implies $)\\
+    To proof $F$ is single-rooted, Suppose
+    \begin{align*}
+        &\langle x,z \rangle \in F \land \langle y,z \rangle \in F\\
+        &\implies \langle z,x \rangle \in F^{-1} \land \langle z,y \rangle \in F^{-1} \\
+        &\implies x = y
+    \end{align*}
+
+    ($\Leftarrow $)
+    To proof $F^{-1}$ is single-valued, Suppose
+    \begin{align*}
+        &\langle z,x\rangle \in F^{-1} \land \langle z,y \rangle \in F^{-1}\\
+        &\implies \langle x,z \rangle \in F \land \langle y,z \rangle \in F\\
+        &\implies x = y
+    \end{align*}
+\end{proof}
+
+\begin{corollary}{}{}
+    $F$ is a one-one function, $F^{-1}$ is also a one-one function.
+\end{corollary}
+
+\begin{proof}
+    Firstly, $F$ is single-rooted implies $F^{-1}$ is a function. Then 
+    $F$ is a function implies $F^{-1}$ is single-rooted. So $F^{-1}$ is one-one.
+\end{proof}
+
+\begin{theorem}{}{}
+    Let $F$ be a one-one function.
+    \begin{enumerate}
+
+        \item $(F^{-1} \circ F)(x) = x$ for all $x \in domF$
+        \item $(F \circ F^{-1})(y) = y$ for all $y \in ranF$
+
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    for every $x \in domF$, there exits $y \in ranF$ s.t. $F(x) = y$.
+    \begin{equation*}
+        F^{-1} \circ F(x) = F^{-1}(F(x))
+    \end{equation*}
+\end{proof}
+
+\begin{definition}{Surjection}{}
+    A function $F : A \to B$ maps A \textbf{onto} B, or \textbf{surjection} iff $ranF = B$, that is for any $y \in B$
+    \begin{equation*}
+        \exists x \in A(F(x) = y)
+    \end{equation*}
+\end{definition}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+
+    % Red ellipse for domain A and green ellipse for codomain B
+    \draw[thick, fill=red!20] (-2, 2.5) ellipse [x radius=1.5, y radius=2] node[above=3.2cm] {Domain \( A \)};
+    \draw[thick, fill=green!20] (3, 2.5) ellipse [x radius=1.5, y radius=2] node[above=3.2cm] {Codomain \( B \)};
+
+    % Black dots for elements of A inside the red ellipse
+    \fill[black] (-2,4) circle (2pt) node[right] {a};
+    \fill[black] (-2,3) circle (2pt) node[right] {b};
+    \fill[black] (-2,2) circle (2pt) node[right] {c};
+    \fill[black] (-2,1) circle (2pt) node[right] {d};
+
+    % Black dots for elements of B inside the green ellipse
+    \fill[black] (3,3.5) circle (2pt) node[right] {1};
+    \fill[black] (3,2.5) circle (2pt) node[right] {2};
+    \fill[black] (3,1.5) circle (2pt) node[right] {3};
+
+    % Thicker arrows representing the function
+    \draw[thick,->] (-2,4) -- (3,2.5); % a -> 2
+    \draw[thick,->] (-2,3) -- (3,3.5); % b -> 1
+    \draw[thick,->] (-2,2) -- (3,1.5); % c -> 3
+    \draw[thick,->] (-2,1) -- (3,2.5); % d -> 2
+
+    \end{tikzpicture}
+    \caption{Arrow diagram representing the function \( F: A \to B \) defined by \( F = \{\langle a, 2 \rangle, \langle b, 1 \rangle, \langle c, 3 \rangle, \langle d, 2 \rangle\} \)}
+    \label{fig:surjection}
+\end{figure}
+
+\begin{definition}{Bijection}{}
+    A function $F : A \to B$ is injective and surjective is called a \textbf{bijection}. In other words, $F$ is one-one and onto $B$.
+\end{definition}
+
+\begin{theorem}{}{}
+    If $F : A \to B$ is a bijection, then $F^{-1} : B \to A$ is also a bijection and
+    \begin{enumerate}
+
+        \item $(F \circ F^{-1})(x) = x$ for all $x \in A$
+        \item $(F^{-1} \circ F)(y) = y$ for all $y \in B$
+
+    \end{enumerate}
+
+\end{theorem}
+
+\subsubsection{Index sets}
+
+It is useful to identify the function $F$ by using the indexed notation $\langle F_i : i \in I \rangle$ where $I$ is referred to as the \underline{index set}, an element $i$ in $I$ is called an \underline{index}, and each value $F_i$ of the function at an index $i$ is called a \underline{term}. Thus, $\langle F_i : i \in I \rangle$ will be said to have nonempty terms when $F_i \neq \varnothing$ for all $i \in I$. We shall say that $\langle F_i : i \in I \rangle$ is an \underline{indexed function}, and its range $\{ F_i : i \in I \}$ shall be called an \underline{indexed set}.
+
+\begin{definition}{}{}
+    Let $\{ F_i : i \in I \}$ be an indexed set. Define
+\[
+    \bigcup_{i \in I} F_i = \bigcup \{F_{i} : i \in I\}
+\]
+that is,
+\[
+    \bigcup_{i \in I}F_{i} = \{ x : x \in F_i \text{ for some } i \in I \}.
+\]
+\end{definition}
+
+\begin{definition}{}{}
+    Let $\{ F_i : i \in I \}$ be an indexed set. Define
+\[
+    \bigcap_{i \in I} F_i = \bigcap \{F_{i} : i \in I\}
+\]
+that is,
+\[
+    \bigcap_{i \in I}F_{i} = \{ x : x \in F_i \text{ for all } i \in I \}.
+\]
+\end{definition}
+
+
