@@ -61,4 +61,97 @@ architecture of set theory.
    \end{itemize} 
 \end{example}
 
+\begin{definition}{Inductive}{}
+    A set $I$ is said to be \textbf{inductive} iff
+    \begin{enumerate}
+
+        \item $\varnothing \in I$
+        \item $\forall a \in I (a^{+} \in I)$
+
+    \end{enumerate}
+    The second one can be also restated as "The set is closed under successor."
+\end{definition}
+
+\begin{lemma}{Infinity Axiom}{}
+    There is a inductive set.
+    \begin{equation*}
+        \exists I (\varnothing \in I \land \forall x \in I(x^{+} \in I))
+    \end{equation*}
+\end{lemma}
+
+\begin{definition}{Natural Numbers}{}
+    A \textbf{natural number} is an element that belongs to every
+    inductive sets. In other words, $x$ is a natural number iff
+    $x$ in every inductive sets.
+\end{definition}
+
+\begin{definition}{Natural Number Set}{}
+    There exits a unique set $\omega$ such that for all $x$
+    \begin{equation*}
+        x \in \omega \iff x \text{ in every inductive set}
+    \end{equation*}
+    We denote the set as 
+    \begin{equation*}
+        \omega = \{x : x \text{ in every inductive set}\}
+    \end{equation*}
+\end{definition}
+
+\begin{proof}
+    By infinity axiom, there exits an inductive set $A$. And
+    \begin{equation*}
+        x \text{ in every inductive set } \implies x \in A.
+    \end{equation*}
+    By \Cref{class}, there is a unique set $\omega$ s.t.
+    \begin{equation*}
+        x \in \omega \iff x \text{ in every inductive set}
+    \end{equation*}
+\end{proof}
+
+\begin{theorem}{}{}
+    The set $\omega$ is inductive and is a subset of every inductive set. Hence $\omega$ is the smallest inductive set. 
+\end{theorem}
+
+\begin{corollary}{Principle of Mathematical Induction}{label:PMI}
+    If $I$ is inductive and $I \subseteq \omega$, then $I = \omega$.
+\end{corollary}
+    
+\begin{remarks}
+    Suppose $P(n)$ is some property. To prove by induction that 
+    \begin{equation*}
+        \forall n \in \omega P(n)
+    \end{equation*}
+    We just let $I = \{n \in \omega : P(n)\} \subseteq \omega$ 
+    If we can prove that 
+    \begin{enumerate}
+
+        \item $0 \in I$
+        \item $n \in I \implies n^{+} \in I$
+
+    \end{enumerate} 
+    Then $I = \omega$, by \Cref{label:PMI}. Therefore $P(n)$ holds
+    for all natural numbers.
+\end{remarks}
+
+\begin{theorem}{}{}
+    For every $n \in \omega$, either $n = 0$, or $n = k^{+}$ for 
+    some $k \in \omega$.
+\end{theorem}
+
+\begin{proof}
+    Let $I = \{n \in \omega: n = 0 \lor \exists k \in \omega(n = k^{+})\}$\\
+    \begin{itemize}
+
+        \item Obviously, $0 \in I$.
+        \item Let $n \in I$, then $n = 0 \lor n = k^{+} \text{ for some } k \in \omega$. 
+        We get $n^{+} = 0^{+} \lor n^{+} = (k^{+})^{+}$
+        where $k^{+} \in \omega$. Thus $n^{+} \in I$.
+
+    \end{itemize}
+    By \Cref{label:PMI}, $I = \omega$.
+\end{proof}
+
+\begin{theorem}{Recursion Theorem}{}
+    
+\end{theorem}
+
 

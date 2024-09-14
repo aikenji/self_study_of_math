@@ -1,14 +1,14 @@
 \section{Relations and Functions}
-\subsection{Ordered pairs}
+\subsection{Ordered Pairs}
 In mathematics, relations and functions are usually defined in terms of ordered pairs. The key property the ordered pairs satisfied is as below
-\begin{definition}{Ordered pairs}{}
+\begin{definition}{Ordered Pairs}{}
     Basic property the ordered pairs should satisfy, which is also the axiomatic definition of ordered pairs
     \begin{equation*}
         \langle a,b \rangle = \langle c,d \rangle \iff a = b \land c = d
     \end{equation*}
 \end{definition}
 In 1921, Kazimierz Kuratowski give the construction of ordered pair based on ZF systems. 
-\begin{definition}{Set based construction of ordered pairs}{}
+\begin{definition}{Set Based Construction of Ordered Pairs}{}
     The \textbf{ordered pair}, with first component x and second component y, is the set defined by
     \begin{equation*}
         \langle x,y \rangle = \{\{x\}, \{x, y\}\}
@@ -32,7 +32,7 @@ In 1921, Kazimierz Kuratowski give the construction of ordered pair based on ZF 
     The set $\mathcal{D}$ is uniquely defined by \Cref{class}.
 \end{proof}
 
-\begin{definition}{Cartesian product}{}
+\begin{definition}{Cartesian Product}{}
     Given sets $A$ and $B$, the \textbf{Cartesian product} $A \times B$ is defined to be the set
     \begin{equation*}
         A \times B = \{\langle x,y \rangle : x \in A \land y \in B\}
@@ -84,7 +84,7 @@ We conclude that every relation can be viewed as a relation on one set.
     we have concluded that $x, y \in \cup \cup R$, hence the domain and range of relation $R$ are proofed to to be sets by \Cref{class}.
 \end{remarks}
 
-\begin{definition}{Operations on relations}{}
+\begin{definition}{Operations on Relations}{}
     Let $R$ and $S$ be relations, and given set $A$
     \begin{enumerate}
 
@@ -156,10 +156,10 @@ The above proposition proclaim that the image of a union is the union of the ima
     \end{enumerate}
 \end{corollary}
 
-\subsubsection{Equivalence relations}
+\subsubsection{Equivalence Relations}
 Let $R$ be a relation. If $\langle x,y \rangle \in R$, we shall say that x is related to y, sometimes it is also written as $xRy$. 
 
-\begin{definition}{Equivalence relation}{}
+\begin{definition}{Equivalence Relation}{}
     Let $\sim$ be a relation on $A$. For any $x$, $y$ and $z$ in $A$.
     \begin{enumerate}
 
@@ -191,7 +191,7 @@ Let $R$ be a relation. If $\langle x,y \rangle \in R$, we shall say that x is re
     \end{enumerate}
 \end{definition}
     
-\begin{definition}{Equivalence class}{}
+\begin{definition}{Equivalence Class}{}
     Let $\sim$ be an equivalence relation on $A$, and $a$ be an element of $A$. The \textbf{equivalence class} of $a$ is the set consists of all elements of $A$ which are related to $a$. We denote it as
     \begin{equation*}
         [a] = \{x \in A: x \sim a\}
@@ -304,9 +304,9 @@ Let $R$ be a relation. If $\langle x,y \rangle \in R$, we shall say that x is re
     \end{equation*}
 \end{examples}
 
-\subsubsection{Order relations}
+\subsubsection{Order Relations}
 
-\begin{definition}{Partial order}{}
+\begin{definition}{Partial Order}{}
     Let $\preceq$ be a relation on $A$. For any $x$, $y$ and $z$ in $A$.
     \begin{enumerate}
 
@@ -355,7 +355,7 @@ Let $R$ be a relation. If $\langle x,y \rangle \in R$, we shall say that x is re
 
 \newpage
 
-\begin{definition}{Total order}{}
+\begin{definition}{Total Order}{}
     Let $(A,\preceq)$ be a poset, if relation $\preceq$ satisfy that for any $x,y \in A$,
     \begin{equation*}
         x \preceq y \lor y \preceq x
@@ -366,7 +366,7 @@ Let $R$ be a relation. If $\langle x,y \rangle \in R$, we shall say that x is re
 \begin{remarks}
     sometimes we call that $x$ and $y$ are comparable if either $x \preceq y$ or $y \preceq x$.
 \end{remarks}
-\begin{definition}{Strict order corresponding to $\preceq$}{}
+\begin{definition}{Strict Order corresponding to $\preceq$}{}
     Let $(A,\preceq)$ be a poset, for any $x,y \in A$, we define
     \begin{equation*}
         x \prec y \iff  x \preceq y \land x \neq y
@@ -601,7 +601,7 @@ B^A = \{ F : F : A \to B \}.
     \]
 \end{examples}
 
-\begin{definition}{Operations on functions}{}
+\begin{definition}{Operations on Functions}{}
     Let $F$ and $G$ be functions, and given set $A$
     \begin{enumerate}
 
@@ -632,7 +632,7 @@ B^A = \{ F : F : A \to B \}.
     \end{enumerate}
 \end{definition}
 
-\subsubsection{One-to-one functions}
+\subsubsection{One-to-one Functions}
 If a function has no repeated values, then we will say that the function is one-to-one.
 For example:
 
@@ -786,7 +786,7 @@ For example:
 
 \end{theorem}
 
-\subsubsection{Index sets}
+\subsubsection{Index Sets}
 
 It is useful to identify the function $F$ by using the indexed notation $\langle F_i : i \in I \rangle$ where $I$ is referred to as the \underline{index set}, an element $i$ in $I$ is called an \underline{index}, and each value $F_i$ of the function at an index $i$ is called a \underline{term}. Thus, $\langle F_i : i \in I \rangle$ will be said to have nonempty terms when $F_i \neq \varnothing$ for all $i \in I$. We shall say that $\langle F_i : i \in I \rangle$ is an \underline{indexed function}, and its range $\{ F_i : i \in I \}$ shall be called an \underline{indexed set}.
 
@@ -812,4 +812,4 @@ that is,
 \]
 \end{definition}
 
-
+\newpage
